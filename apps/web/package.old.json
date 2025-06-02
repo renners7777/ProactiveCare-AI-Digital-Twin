@@ -1,0 +1,17 @@
+{
+  "name": "proactivecare-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "web": "yarn workspace web dev",
+    "mobile": "yarn workspace mobile start",
+    "test": "yarn workspaces run test"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.3"
+  }
+}

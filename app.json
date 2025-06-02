@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "629a387f-eaed-4ee8-886f-c785599dade5"
+      }
+    },
+    "owner": "chris_renshaw",
+    "slug": "proactivecare-ai-digital-twin"
+  }
+}
