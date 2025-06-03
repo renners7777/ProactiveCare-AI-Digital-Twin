@@ -4,6 +4,9 @@
     "apps/*",
     "packages/*"
   ],
+  "scripts": {
+    "dev": "yarn workspace web dev"
+  },
   "dependencies": {
     "vite": "^5.0.0"
   }
