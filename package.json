@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "yarn workspace web dev"
   },
-  "dependencies": {
+  "devDependencies": {
     "vite": "^5.0.0"
   }
 }
