@@ -55,6 +55,47 @@ export interface Database {
           created_at?: string
         }
       }
+      health_data: {
+        Row: {
+          id: string
+          user_id: string
+          date: string
+          steps: number
+          heart_rate: number[]
+          sleep_hours: number
+          active_minutes: number
+          distance: number
+          device_type: string
+          synced_at: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          date: string
+          steps: number
+          heart_rate: number[]
+          sleep_hours: number
+          active_minutes: number
+          distance: number
+          device_type: string
+          synced_at: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          date?: string
+          steps?: number
+          heart_rate?: number[]
+          sleep_hours?: number
+          active_minutes?: number
+          distance?: number
+          device_type?: string
+          synced_at?: string
+          created_at?: string
+        }
+      }
     }
   }
 }
