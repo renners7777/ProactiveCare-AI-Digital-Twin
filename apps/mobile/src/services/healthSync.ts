@@ -43,14 +43,13 @@ class HealthSyncService {
         .from('health_data')
         .upsert({
           patient_id: patientId,
-          date: new Date().toISOString().split('T')[0],
+          recorded_at: new Date().toISOString(),
           steps: healthData.steps,
           heart_rate: healthData.heartRate,
           sleep_hours: healthData.sleepHours,
           active_minutes: healthData.activeMinutes,
           distance: healthData.distance,
-          device_type: Platform.OS === 'ios' ? 'apple_health' : 'google_fit',
-          synced_at: new Date().toISOString()
+          device_type: Platform.OS === 'ios' ? 'apple_health' : 'google_fit'
         });
 
       if (error) {

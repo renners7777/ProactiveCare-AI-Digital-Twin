@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { ArrowLeft, Heart, Activity, Clock } from 'lucide-react';
@@ -25,9 +25,6 @@ interface HealthData {
   distance: number;
 }
 
-// UUID validation regex pattern
-const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-
 const PatientDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -41,14 +38,7 @@ const PatientDetail: React.FC = () => {
   useEffect(() => {
     if (id) {
       selectPatient(id);
-      // Only fetch health data if id is a valid UUID
-      if (UUID_REGEX.test(id)) {
-        fetchHealthData();
-      } else {
-        // For non-UUID IDs (like 'P001'), set empty data and loading to false
-        setHealthData([]);
-        setLoading(false);
-      }
+      fetchHealthData();
     }
   }, [id, selectPatient]);
 
