@@ -20,6 +20,7 @@
     "expo-updates": "~0.24.11",
     "expo-sensors": "~12.9.1",
     "expo-health": "~1.0.1",
+    "lucide-react-native": "^0.344.0",
     "nativewind": "^4.0.1",
     "react": "18.2.0",
     "react-native": "0.73.4",
