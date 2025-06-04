@@ -42,7 +42,7 @@ class HealthSyncService {
       const { error } = await supabase
         .from('health_data')
         .upsert({
-          user_id: userId, // Changed from patient_id to user_id
+          patient_id: userId,
           recorded_at: new Date().toISOString(),
           steps: healthData.steps,
           heart_rate: healthData.heartRate,

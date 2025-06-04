@@ -58,7 +58,7 @@ export interface Database {
       health_data: {
         Row: {
           id: string
-          user_id: string
+          patient_id: string
           date: string
           steps: number
           heart_rate: number[]
@@ -71,7 +71,7 @@ export interface Database {
         }
         Insert: {
           id?: string
-          user_id: string
+          patient_id: string
           date: string
           steps: number
           heart_rate: number[]
@@ -84,7 +84,7 @@ export interface Database {
         }
         Update: {
           id?: string
-          user_id?: string
+          patient_id?: string
           date?: string
           steps?: number
           heart_rate?: number[]
