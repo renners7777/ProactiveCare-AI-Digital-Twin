@@ -40,11 +40,11 @@ export const PatientProvider: React.FC<PatientProviderProps> = ({ children }) =>
   // Initialize with sample patients
   useEffect(() => {
     const initialPatients = [
-      generatePatientData('P001', 'Thomas Williams', 78, 'male'),
-      generatePatientData('P002', 'Margaret Johnson', 82, 'female'),
-      generatePatientData('P003', 'Robert Davis', 75, 'male'),
-      generatePatientData('P004', 'Elizabeth Brown', 85, 'female'),
-      generatePatientData('P005', 'James Wilson', 79, 'male')
+      generatePatientData('Thomas Williams', 78, 'male'),
+      generatePatientData('Margaret Johnson', 82, 'female'),
+      generatePatientData('Robert Davis', 75, 'male'),
+      generatePatientData('Elizabeth Brown', 85, 'female'),
+      generatePatientData('James Wilson', 79, 'male')
     ];
     
     setPatients(initialPatients);
@@ -52,25 +52,20 @@ export const PatientProvider: React.FC<PatientProviderProps> = ({ children }) =>
     setLoading(false);
   }, []);
 
-  // Advance simulation by one day
   const advanceDay = () => {
     const newDate = addDays(currentDate, 1);
     setCurrentDate(newDate);
     
-    // Simulate activities for each patient for the new day
     const updatedPatients = patients.map(patient => {
       const newActivity = simulateDay(patient, format(newDate, 'yyyy-MM-dd'));
       
-      // Add the new activity to the patient's history
       const updatedPatient = {
         ...patient,
         activityHistory: [...patient.activityHistory, newActivity]
       };
       
-      // Analyze the updated data for anomalies
       const analysis = analyzePatientData(updatedPatient);
       
-      // If an alert is detected, add it to the alerts list
       if (analysis.alert) {
         const newAlert: Alert = {
           id: `alert-${Date.now()}-${patient.id}`,
@@ -113,13 +108,11 @@ export const PatientProvider: React.FC<PatientProviderProps> = ({ children }) =>
     let simulatedActivities: DailyActivity[] = [];
     const today = format(currentDate, 'yyyy-MM-dd');
     
-    // Create different scenarios based on the type
     switch (scenarioType) {
       case 'subtle-slowdown':
-        // Simulate gradual decline in mobility over 7 days
         for (let i = 0; i < 7; i++) {
           const day = format(addDays(currentDate, i), 'yyyy-MM-dd');
-          const declineFactor = 1 - (i * 0.05); // 5% decline each day
+          const declineFactor = 1 - (i * 0.05);
           
           simulatedActivities.push({
             date: day,
@@ -138,28 +131,23 @@ export const PatientProvider: React.FC<PatientProviderProps> = ({ children }) =>
         break;
         
       case 'hypertensive-crisis':
-        // Simulate hypertensive crisis scenario
         simulatedActivities = simulateHypertensiveCrisis(targetPatient, 14);
         break;
         
       case 'dementia-episode':
-        // Simulate dementia-related episode
         simulatedActivities = simulateDementiaEpisode(targetPatient, 14);
         break;
     }
     
-    // Update the patient with simulated activities
     const updatedPatient = {
       ...targetPatient,
       activityHistory: [...targetPatient.activityHistory, ...simulatedActivities]
     };
     
-    // Update the patients list
     setPatients(prevPatients => 
       prevPatients.map(p => p.id === patientId ? updatedPatient : p)
     );
     
-    // Generate appropriate alerts
     const analysis = analyzePatientData(updatedPatient);
     
     if (analysis.alert) {

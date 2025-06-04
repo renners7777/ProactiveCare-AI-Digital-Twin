@@ -3,11 +3,13 @@ import { format, subDays } from 'date-fns';
 
 // Generate initial patient data with enhanced risk factors
 export function generatePatientData(
-  id: string,
   name: string,
   age: number,
   gender: 'male' | 'female' | 'other'
 ): Patient {
+  // Generate UUID for patient ID
+  const id = crypto.randomUUID();
+  
   // Base metrics adjusted for age and gender
   const baseSteps = gender === 'male' 
     ? Math.round(6000 - (age - 65) * 100) 
