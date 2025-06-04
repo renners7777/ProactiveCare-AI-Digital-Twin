@@ -2,14 +2,16 @@
   "$schema": "https://json.schemastore.org/package.json",
   "name": "mobile",
   "version": "1.0.0",
+  "private": true,
   "description": "Mobile application for ProactiveCare AI Digital Twin",
   "author": "Chris Renshaw",
   "license": "MIT",
   "main": "index.ts",
   "scripts": {
-    "start": "npx expo start --clear",
-    "android": "npx expo start --android",
-    "ios": "npx expo start --ios",
+    "start": "expo start --clear",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
     "test": "jest"
   },
   "dependencies": {
@@ -40,7 +42,6 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.0"
   },
-  "private": true,
   "jest": {
     "preset": "jest-expo",
     "transformIgnorePatterns": [
