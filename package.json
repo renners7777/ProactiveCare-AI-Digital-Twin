@@ -4,6 +4,10 @@
     "apps/*",
     "packages/*"
   ],
+  "resolutions": {
+    "metro": "^0.81.0",
+    "react": "19.0.0"
+  },
   "scripts": {
     "dev": "yarn workspace web dev",
     "mobile": "yarn workspace mobile start",
