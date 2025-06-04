@@ -7261,7 +7261,7 @@ metro-cache@0.82.4:
     https-proxy-agent "^7.0.5"
     metro-core "0.82.4"
 
-metro-config@0.80.12, metro-config@^0.80.3:
+metro-config@0.80.12, metro-config@^0.80.3, metro-config@~0.80.4:
   version "0.80.12"
   resolved "https://registry.yarnpkg.com/metro-config/-/metro-config-0.80.12.tgz#1543009f37f7ad26352ffc493fc6305d38bdf1c0"
   integrity sha512-4rwOWwrhm62LjB12ytiuR5NgK1ZBNr24/He8mqCsC+HXZ+ATbrewLNztzbAZHtFsrxP4D4GLTGgh96pCpYLSAQ==
@@ -7357,7 +7357,7 @@ metro-minify-terser@0.82.4:
     flow-enums-runtime "^0.0.6"
     terser "^5.15.0"
 
-metro-resolver@0.80.12:
+metro-resolver@0.80.12, metro-resolver@~0.80.4:
   version "0.80.12"
   resolved "https://registry.yarnpkg.com/metro-resolver/-/metro-resolver-0.80.12.tgz#e3815914c21315b04db200032c3243a4cc22dfb6"
   integrity sha512-PR24gYRZnYHM3xT9pg6BdbrGbM/Cu1TcyIFBVlAk7qDAuHkUNQ1nMzWumWs+kwSvtd9eZGzHoucGJpTUEeLZAw==
@@ -7505,7 +7505,7 @@ metro-transform-worker@0.82.4:
     metro-transform-plugins "0.82.4"
     nullthrows "^1.1.1"
 
-metro@0.80.12, metro@^0.80.3:
+metro@0.80.12, metro@^0.80.3, metro@~0.80.4:
   version "0.80.12"
   resolved "https://registry.yarnpkg.com/metro/-/metro-0.80.12.tgz#29a61fb83581a71e50c4d8d5d8458270edfe34cc"
   integrity sha512-1UsH5FzJd9quUsD1qY+zUG4JY3jo3YEMxbMYH9jT6NK3j4iORhlwTK8fYTfAUBhDKjgLfKjAh7aoazNE23oIRA==
