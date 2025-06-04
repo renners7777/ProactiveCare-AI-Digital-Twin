@@ -6,6 +6,19 @@ import { supabase } from 'common';
 
 const Stack = createNativeStackNavigator();
 
+function HomeScreen() {
+  return (
+    <View className="flex-1 items-center justify-center bg-neutral-100">
+      <Text className="text-xl font-bold text-neutral-800">
+        Welcome to ProactiveCare Mobile
+      </Text>
+      <Text className="mt-2 text-neutral-600">
+        Your digital health companion
+      </Text>
+    </View>
+  );
+}
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -18,18 +31,5 @@ export default function App() {
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
-  );
-}
-
-function HomeScreen() {
-  return (
-    <View className="flex-1 items-center justify-center bg-neutral-100">
-      <Text className="text-xl font-bold text-neutral-800">
-        Welcome to ProactiveCare Mobile
-      </Text>
-      <Text className="mt-2 text-neutral-600">
-        Your digital health companion
-      </Text>
-    </View>
   );
 }
