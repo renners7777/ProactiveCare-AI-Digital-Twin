@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "mobile",
   "version": "1.0.0",
   "description": "Mobile application for ProactiveCare AI Digital Twin",
