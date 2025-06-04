@@ -8,7 +8,9 @@ const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState('carer');
+  const [role, setRole] = useState('patient');
+  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [fullName, setFullName] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [registered, setRegistered] = useState(false);
@@ -33,6 +35,14 @@ const Register: React.FC = () => {
 
     if (password.length < 6) {
       return setError('Password must be at least 6 characters long');
+    }
+
+    if (role === 'patient' && !dateOfBirth) {
+      return setError('Date of birth is required for patients');
+    }
+
+    if (!fullName) {
+      return setError('Full name is required');
     }
 
     try {
@@ -83,7 +93,7 @@ const Register: React.FC = () => {
             Create your account
           </h2>
           <p className="mt-2 text-center text-sm text-neutral-600">
-            Join ProactiveCare to monitor and support patients
+            Join ProactiveCare to manage your health and well-being
           </p>
         </div>
 
@@ -97,6 +107,22 @@ const Register: React.FC = () => {
 
           <div className="rounded-md shadow-sm space-y-4">
             <div>
+              <label htmlFor="full-name" className="block text-sm font-medium text-neutral-700">
+                Full Name
+              </label>
+              <input
+                id="full-name"
+                name="full-name"
+                type="text"
+                required
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                className="mt-1 appearance-none rounded-lg relative block w-full px-3 py-2 border border-neutral-300 placeholder-neutral-500 text-neutral-900 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm"
+                placeholder="Enter your full name"
+              />
+            </div>
+
+            <div>
               <label htmlFor="email" className="block text-sm font-medium text-neutral-700">
                 Email address
               </label>
@@ -109,7 +135,7 @@ const Register: React.FC = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="mt-1 appearance-none rounded-lg relative block w-full px-3 py-2 border border-neutral-300 placeholder-neutral-500 text-neutral-900 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm"
-                placeholder="Enter your email (e.g., name@example.com)"
+                placeholder="Enter your email"
               />
             </div>
 
@@ -149,7 +175,7 @@ const Register: React.FC = () => {
 
             <div>
               <label htmlFor="role" className="block text-sm font-medium text-neutral-700">
-                Role
+                I am a
               </label>
               <select
                 id="role"
@@ -158,9 +184,9 @@ const Register: React.FC = () => {
                 onChange={(e) => setRole(e.target.value)}
                 className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-neutral-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-lg"
               >
+                <option value="patient">Patient</option>
                 <option value="carer">Healthcare Professional</option>
                 <option value="family">Family Member</option>
-                <option value="patient">Patient</option>
               </select>
             </div>
 
@@ -174,6 +200,8 @@ const Register: React.FC = () => {
                   name="date_of_birth"
                   type="date"
                   required
+                  value={dateOfBirth}
+                  onChange={(e) => setDateOfBirth(e.target.value)}
                   className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-neutral-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-lg"
                 />
               </div>
