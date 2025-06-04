@@ -17,7 +17,7 @@ import HealthDataChart from '../components/health/HealthDataChart';
 import { analyzePatientData } from '../services/analysisService';
 
 interface HealthData {
-  date: string;
+  recorded_at: string;
   steps: number;
   heart_rate: number[];
   sleep_hours: number;
@@ -48,7 +48,7 @@ const PatientDetail: React.FC = () => {
         .from('health_data')
         .select('*')
         .eq('patient_id', id)
-        .order('date', { ascending: false })
+        .order('recorded_at', { ascending: false })
         .limit(14);
 
       if (error) throw error;
@@ -132,7 +132,7 @@ const PatientDetail: React.FC = () => {
 
         {latestHealthData && (
           <HealthDataCard
-            date={latestHealthData.date}
+            date={latestHealthData.recorded_at}
             steps={latestHealthData.steps}
             heartRate={latestHealthData.heart_rate}
             sleepHours={latestHealthData.sleep_hours}
