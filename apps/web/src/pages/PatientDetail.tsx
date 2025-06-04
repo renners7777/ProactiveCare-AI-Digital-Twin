@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { ArrowLeft, Heart, Activity, Clock } from 'lucide-react';
 import { usePatient } from '../contexts/PatientContext';
+import { supabase } from '../lib/supabase';
 import Button from '../components/ui/Button';
 import ActivityChart from '../components/charts/ActivityChart';
 import RiskIndicator from '../components/ui/RiskIndicator';
@@ -11,12 +12,25 @@ import RecommendationsPanel from '../components/ui/RecommendationsPanel';
 import RiskFactorsPanel from '../components/ui/RiskFactorsPanel';
 import EnvironmentalRisksPanel from '../components/ui/EnvironmentalRisksPanel';
 import TimeBasedRiskPanel from '../components/ui/TimeBasedRiskPanel';
+import HealthDataCard from '../components/health/HealthDataCard';
+import HealthDataChart from '../components/health/HealthDataChart';
 import { analyzePatientData } from '../services/analysisService';
+
+interface HealthData {
+  date: string;
+  steps: number;
+  heart_rate: number[];
+  sleep_hours: number;
+  active_minutes: number;
+  distance: number;
+}
 
 const PatientDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { patients, currentDate, selectPatient, alerts } = usePatient();
+  const [healthData, setHealthData] = useState<HealthData[]>([]);
+  const [loading, setLoading] = useState(true);
   
   const patient = patients.find(p => p.id === id);
   const patientAlerts = alerts.filter(alert => alert.patientId === id);
@@ -24,8 +38,27 @@ const PatientDetail: React.FC = () => {
   useEffect(() => {
     if (id) {
       selectPatient(id);
+      fetchHealthData();
     }
   }, [id, selectPatient]);
+
+  const fetchHealthData = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('health_data')
+        .select('*')
+        .eq('user_id', id)
+        .order('date', { ascending: false })
+        .limit(14);
+
+      if (error) throw error;
+      setHealthData(data || []);
+    } catch (error) {
+      console.error('Error fetching health data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
   
   if (!patient) {
     return (
@@ -47,6 +80,9 @@ const PatientDetail: React.FC = () => {
   
   // Analyze patient data
   const analysis = analyzePatientData(patient);
+
+  // Get the most recent health data
+  const latestHealthData = healthData[0];
   
   return (
     <div className="space-y-6">
@@ -93,6 +129,17 @@ const PatientDetail: React.FC = () => {
             </Button>
           </div>
         </div>
+
+        {latestHealthData && (
+          <HealthDataCard
+            date={latestHealthData.date}
+            steps={latestHealthData.steps}
+            heartRate={latestHealthData.heart_rate}
+            sleepHours={latestHealthData.sleep_hours}
+            activeMinutes={latestHealthData.active_minutes}
+            distance={latestHealthData.distance}
+          />
+        )}
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
@@ -175,6 +222,13 @@ const PatientDetail: React.FC = () => {
             <ActivityChart activityData={recentActivity} baseline={patient.baseline} />
           </div>
         </div>
+
+        {healthData.length > 0 && (
+          <div className="mb-6">
+            <h2 className="text-lg font-semibold mb-3">Health Data Trends</h2>
+            <HealthDataChart data={healthData} />
+          </div>
+        )}
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           <div>
