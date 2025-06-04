@@ -47,7 +47,7 @@ const PatientDetail: React.FC = () => {
       const { data, error } = await supabase
         .from('health_data')
         .select('*')
-        .eq('patient_id', id)
+        .eq('user_id', id) // Changed from patient_id to user_id
         .order('recorded_at', { ascending: false })
         .limit(14);
 

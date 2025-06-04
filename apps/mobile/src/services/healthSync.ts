@@ -11,15 +11,15 @@ class HealthSyncService {
     return service.initialize();
   }
 
-  async startSync(patientId: string, intervalMinutes: number = 15): Promise<void> {
+  async startSync(userId: string, intervalMinutes: number = 15): Promise<void> {
     if (this.syncInterval) {
       clearInterval(this.syncInterval);
     }
 
-    await this.syncHealthData(patientId);
+    await this.syncHealthData(userId);
 
     this.syncInterval = setInterval(() => {
-      this.syncHealthData(patientId);
+      this.syncHealthData(userId);
     }, intervalMinutes * 60 * 1000);
   }
 
@@ -30,7 +30,7 @@ class HealthSyncService {
     }
   }
 
-  private async syncHealthData(patientId: string): Promise<void> {
+  private async syncHealthData(userId: string): Promise<void> {
     try {
       const service = Platform.OS === 'ios' ? healthKitService : googleFitService;
       const healthData = await service.getDailyHealthData(new Date());
@@ -42,7 +42,7 @@ class HealthSyncService {
       const { error } = await supabase
         .from('health_data')
         .upsert({
-          patient_id: patientId,
+          user_id: userId, // Changed from patient_id to user_id
           recorded_at: new Date().toISOString(),
           steps: healthData.steps,
           heart_rate: healthData.heartRate,
