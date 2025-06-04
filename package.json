@@ -5,9 +5,11 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "yarn workspace web dev"
+    "dev": "yarn workspace web dev",
+    "mobile": "yarn workspace mobile start",
+    "test": "yarn workspaces run test"
   },
   "devDependencies": {
-    "vite": "^5.0.0"
+    "typescript": "^5.3.3"
   }
 }
