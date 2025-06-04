@@ -160,8 +160,24 @@ const Register: React.FC = () => {
               >
                 <option value="carer">Healthcare Professional</option>
                 <option value="family">Family Member</option>
+                <option value="patient">Patient</option>
               </select>
             </div>
+
+            {role === 'patient' && (
+              <div>
+                <label htmlFor="date_of_birth" className="block text-sm font-medium text-neutral-700">
+                  Date of Birth
+                </label>
+                <input
+                  id="date_of_birth"
+                  name="date_of_birth"
+                  type="date"
+                  required
+                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-neutral-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-lg"
+                />
+              </div>
+            )}
           </div>
 
           <div>
