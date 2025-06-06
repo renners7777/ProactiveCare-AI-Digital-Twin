@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
   "$schema": "https://json.schemastore.org/package.json",
+=======
+>>>>>>> fd657c9 (Refactor project structure and configuration files; update TypeScript settings, enhance Supabase integration, and improve health metrics types.)
   "name": "patient-monitoring",
   "private": true,
   "workspaces": [
@@ -13,10 +16,18 @@
   "scripts": {
     "dev": "yarn workspace web dev",
     "mobile": "yarn workspace mobile start",
-    "test": "yarn workspaces run test"
+    "test": "yarn workspaces run test",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "db:pull": "supabase db pull",
+    "db:push": "supabase db push"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
   },
   "packageManager": "yarn@1.22.22"
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fd657c9 (Refactor project structure and configuration files; update TypeScript settings, enhance Supabase integration, and improve health metrics types.)
