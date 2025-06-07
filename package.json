@@ -9,7 +9,10 @@
   "scripts": {
     "dev": "yarn workspace web dev",
     "mobile": "yarn workspace mobile start",
-    "test": "yarn workspaces run test"
+    "test": "yarn workspaces run test",
+    "common:dev": "yarn workspace common dev",
+    "common:build": "yarn workspace common build",
+    "dev:all": "concurrently \"yarn common:dev\" \"yarn dev\" \"yarn mobile\""
   },
   "packageManager": "yarn@1.22.22",
   "resolutions": {
