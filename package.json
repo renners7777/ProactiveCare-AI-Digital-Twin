@@ -9,7 +9,9 @@
   "scripts": {
     "dev": "yarn workspace web dev",
     "mobile": "yarn workspace mobile start",
-    "test": "yarn workspaces run test",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
     "common:dev": "yarn workspace common dev",
     "common:build": "yarn workspace common build",
     "dev:all": "concurrently \"yarn common:dev\" \"yarn dev\" \"yarn mobile\""
