@@ -1,20 +1,36 @@
 import { describe, it, expect, vi } from 'vitest';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { HealthMetrics } from './HealthMetrics';
-import { renderWithProviders } from '../../test/utils';
+import { AuthProvider } from '../../contexts/AuthContext';
 import { useHealthData } from '../../hooks/useHealthData';
 
-vi.mock('../../hooks/useHealthData');
+// Mock supabase
+vi.mock('common/src/supabase', () => ({
+  supabase: {
+    auth: {
+      getUser: vi.fn().mockResolvedValue({ data: { user: { id: '123' } } })
+    }
+  }
+}));
+
+// Mock health data hook
+vi.mock('../../hooks/useHealthData', () => ({
+  useHealthData: vi.fn()
+}));
 
 describe('HealthMetrics', () => {
-  it('renders health metrics charts', () => {
+  it('renders health data charts', () => {
     vi.mocked(useHealthData).mockReturnValue({
       heartRate: [{ timestamp: new Date(), value: 72 }],
       bloodOxygen: [{ timestamp: new Date(), value: 98 }],
-      steps: [{ timestamp: new Date(), value: 5000 }],
+      steps: [{ timestamp: new Date(), value: 5000 }]
     });
 
-    renderWithProviders(<HealthMetrics />);
+    render(
+      <AuthProvider>
+        <HealthMetrics />
+      </AuthProvider>
+    );
 
     expect(screen.getByText('Heart Rate')).toBeInTheDocument();
     expect(screen.getByText('Blood Oxygen')).toBeInTheDocument();

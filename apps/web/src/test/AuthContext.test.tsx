@@ -82,23 +82,20 @@ describe('AuthContext', () => {
   });
 
   it('handles sign in error', async () => {
-    vi.mocked(supabase.auth.signInWithPassword).mockResolvedValueOnce({
-      data: { user: null },
-      error: new Error('Invalid login credentials'),
-    });
+    const mockError = new Error('Invalid credentials');
+    vi.mocked(supabase.auth.signInWithPassword).mockRejectedValueOnce(mockError);
 
     render(
       <AuthProvider>
         <TestComponent />
       </AuthProvider>
     );
-    
+
     const signInButton = screen.getByRole('button', { name: /sign in/i });
-    await userEvent.click(signInButton);
     
-    await waitFor(() => {
-      expect(screen.getByRole('button', { name: /sign in/i })).toBeInTheDocument();
-    });
+    await userEvent.click(signInButton);
+
+    expect(screen.getByText(/Invalid credentials/i)).toBeInTheDocument();
   });
 
   it('handles sign up successfully', async () => {

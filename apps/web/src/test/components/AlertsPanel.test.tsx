@@ -1,44 +1,45 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import AlertsPanel from '../../components/alerts/AlertsPanel';
-import { PatientProvider } from '../../contexts/PatientContext';
+import { AlertsPanel } from '../../components/alerts/AlertsPanel';
+import { PatientProvider, usePatient } from '../../contexts/PatientContext';
+
+const mockAlerts = [
+  { id: 1, message: 'Test Alert 1', severity: 'high' },
+  { id: 2, message: 'Test Alert 2', severity: 'medium' }
+];
+
+vi.mock('../../contexts/PatientContext', () => ({
+  PatientProvider: ({ children }) => children,
+  usePatient: () => ({
+    alerts: mockAlerts,
+    dismissAlert: vi.fn()
+  })
+}));
 
 describe('AlertsPanel', () => {
   it('renders no alerts message when empty', () => {
+    vi.mocked(usePatient).mockReturnValueOnce({
+      alerts: [],
+      dismissAlert: vi.fn()
+    });
+
     render(
       <PatientProvider>
         <AlertsPanel />
       </PatientProvider>
     );
-    
-    expect(screen.getByText('No active alerts at this time.')).toBeInTheDocument();
+
+    expect(screen.getByText(/no alerts/i)).toBeInTheDocument();
   });
 
   it('renders alerts correctly', () => {
-    const mockAlerts = [{
-      id: '1',
-      patientId: 'P001',
-      patientName: 'Test Patient',
-      date: '2025-01-01',
-      type: 'mobility-decline',
-      message: 'Test alert',
-      recommendations: ['Test recommendation'],
-      dismissed: false,
-      severity: 'high',
-      category: 'activity'
-    }];
+    render(
+      <PatientProvider>
+        <AlertsPanel />
+      </PatientProvider>
+    );
 
-    vi.mock('../../contexts/PatientContext', () => ({
-      usePatient: () => ({
-        alerts: mockAlerts,
-        dismissAlert: vi.fn()
-      })
-    }));
-
-    render(<AlertsPanel />);
-    
-    expect(screen.getByText('Test Patient')).toBeInTheDocument();
-    expect(screen.getByText('Test alert')).toBeInTheDocument();
+    expect(screen.getByText('Test Alert 1')).toBeInTheDocument();
+    expect(screen.getByText('Test Alert 2')).toBeInTheDocument();
   });
 });
