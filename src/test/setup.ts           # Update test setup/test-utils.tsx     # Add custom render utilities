@@ -1,0 +1,17 @@
+const { expect } = require('vitest');
+const { render } = require('@testing-library/react');
+const { createContext } = require('react');
+
+const AuthContext = createContext();
+
+const customRender = (ui, { providerProps, ...renderOptions } = {}) => {
+  return render(
+    <AuthContext.Provider {...providerProps}>{ui}</AuthContext.Provider>,
+    renderOptions
+  );
+};
+
+module.exports = {
+  customRender,
+  AuthContext,
+};
