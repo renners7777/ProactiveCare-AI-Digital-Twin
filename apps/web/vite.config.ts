@@ -62,6 +62,14 @@ export default defineConfig({
     watch: {
       usePolling: true,
       interval: 100
+    },
+    headers: {
+      'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY',
+      'X-XSS-Protection': '1; mode=block',
+      'Content-Security-Policy': "default-src 'self'; connect-src 'self' https://*.supabase.co; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';",
+      'Permissions-Policy': 'geolocation=(), microphone=(), camera=()'
     }
   },
   test: {

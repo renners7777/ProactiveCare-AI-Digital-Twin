@@ -12,6 +12,9 @@ import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ResetPassword from './pages/ResetPassword';
+import { DashboardLayout } from './components/dashboard/DashboardLayout';
+import { PrivacyPolicy } from './components/privacy/PrivacyPolicy';
+import { DataConsent } from './components/privacy/DataConsent';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, loading } = useAuth();
@@ -43,6 +46,17 @@ function App() {
         <Route path="about" element={<AboutPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
+      <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="patients" element={<PatientsPage />} />
+        <Route path="analytics" element={<AnalyticsPage />} />
+        <Route path="patient/:id" element={<PatientDetail />} />
+        <Route path="settings" element={<Settings />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+      <Route path="/" element={<PrivacyPolicy />} />
+      <Route path="/consent" element={<DataConsent />} />
     </Routes>
   );
 }

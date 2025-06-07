@@ -7,15 +7,6 @@ const healthService = new HealthService();
 
 export async function setupHealthTracking(userId: string) {
   try {
-    const permissions = [
-      Health.PermissionKind.Steps,
-      Health.PermissionKind.HeartRate,
-      Health.PermissionKind.BloodOxygen,
-      Health.PermissionKind.BodyTemperature,
-      Health.PermissionKind.RespiratoryRate,
-      Health.PermissionKind.SleepAnalysis,
-    ];
-
     const isAvailable = await Health.isAvailableAsync();
     if (!isAvailable) {
       Alert.alert(
@@ -24,6 +15,15 @@ export async function setupHealthTracking(userId: string) {
       );
       return;
     }
+
+    const permissions = [
+      Health.PermissionKind.Steps,
+      Health.PermissionKind.HeartRate,
+      Health.PermissionKind.BloodOxygen,
+      Health.PermissionKind.BodyTemperature,
+      Health.PermissionKind.RespiratoryRate,
+      Health.PermissionKind.SleepAnalysis,
+    ];
 
     await Health.requestPermissionsAsync(permissions);
     await setupBackgroundSync(userId);
@@ -38,25 +38,21 @@ export async function setupHealthTracking(userId: string) {
 }
 
 async function setupBackgroundSync(userId: string) {
-  try {
-    await BackgroundFetch.registerTaskAsync('SYNC_HEALTH_DATA', {
-      minimumInterval: 60 * 15, // 15 minutes
-      stopOnTerminate: false,
-      startOnBoot: true,
-    });
+  await BackgroundFetch.registerTaskAsync('SYNC_HEALTH_DATA', {
+    minimumInterval: 60 * 15, // 15 minutes
+    stopOnTerminate: false,
+    startOnBoot: true,
+  });
 
-    BackgroundFetch.defineTask('SYNC_HEALTH_DATA', async () => {
-      try {
-        await syncHealthData(userId);
-        return BackgroundFetch.Result.NewData;
-      } catch (error) {
-        console.error('Background sync failed:', error);
-        return BackgroundFetch.Result.Failed;
-      }
-    });
-  } catch (error) {
-    console.error('Failed to setup background sync:', error);
-  }
+  BackgroundFetch.defineTask('SYNC_HEALTH_DATA', async () => {
+    try {
+      await syncHealthData(userId);
+      return BackgroundFetch.Result.NewData;
+    } catch (error) {
+      console.error('Background sync failed:', error);
+      return BackgroundFetch.Result.Failed;
+    }
+  });
 }
 
 async function performInitialSync(userId: string) {
@@ -80,18 +76,14 @@ export async function syncHealthData(userId: string) {
       Health.getSleepDataAsync(dayAgo, now)
     ]);
 
-    // Sync health metrics
     await healthService.syncHealthMetrics({
       userId,
       timestamp: now,
       steps: steps.total,
       heartRate: heartRate[0]?.value,
-      bloodOxygen: bloodOxygen[0]?.value,
-      temperature: undefined, // Add when available
-      respiratoryRate: undefined // Add when available
+      bloodOxygen: bloodOxygen[0]?.value
     });
 
-    // Sync sleep data if available
     for (const sleepRecord of sleep) {
       await healthService.syncSleepData({
         userId,
