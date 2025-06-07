@@ -9,12 +9,21 @@
   "scripts": {
     "dev": "yarn workspace web dev",
     "mobile": "yarn workspace mobile start",
-    "test": "yarn workspaces run test"
+    "test": "yarn workspaces run test",
+    "common:dev": "yarn workspace common dev",
+    "common:build": "yarn workspace common build",
+    "dev:all": "concurrently \"yarn common:dev\" \"yarn dev\" \"yarn mobile\""
   },
   "packageManager": "yarn@1.22.22",
   "resolutions": {
     "metro": "^0.81.0",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "react-test-renderer": "19.0.0",
+    "react-native-svg": "14.0.0",
+    "@testing-library/dom": "^9.0.0",
+    "workbox-build": "^7.0.0",
+    "workbox-window": "^7.0.0",
+    "react-native-reanimated": "^3.6.2"
   }
 }
