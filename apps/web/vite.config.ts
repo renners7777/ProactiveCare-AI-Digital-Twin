@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [
@@ -31,8 +32,37 @@ export default defineConfig({
       }
     })
   ],
+  resolve: {
+    alias: {
+      'common': resolve(__dirname, '../../packages/common/src')
+    }
+  },
   optimizeDeps: {
-    exclude: ['lucide-react']
+    include: ['react', 'react-dom'],
+    exclude: ['lucide-react', 'common']
+  },
+  build: {
+    target: 'esnext',
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'chart-vendor': ['chart.js', 'react-chartjs-2']
+        }
+      }
+    }
+  },
+  server: {
+    port: 3000,
+    strictPort: true,
+    hmr: {
+      overlay: true
+    },
+    watch: {
+      usePolling: true,
+      interval: 100
+    }
   },
   test: {
     globals: true,
