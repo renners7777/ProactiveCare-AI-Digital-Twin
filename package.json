@@ -6,17 +6,15 @@
     "apps/*",
     "packages/*"
   ],
-  "resolutions": {
-    "metro": "^0.81.0",
-    "react": "19.0.0"
-  },
   "scripts": {
     "dev": "yarn workspace web dev",
     "mobile": "yarn workspace mobile start",
     "test": "yarn workspaces run test"
   },
-  "devDependencies": {
-    "typescript": "^5.3.3"
-  },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "yarn@1.22.22",
+  "resolutions": {
+    "metro": "^0.81.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  }
 }
