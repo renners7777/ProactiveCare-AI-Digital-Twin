@@ -3,8 +3,8 @@
   "name": "patient-monitoring",
   "private": true,
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
     "dev": "yarn workspace web dev",
@@ -31,5 +31,8 @@
     "workbox-build": "^7.0.0",
     "workbox-window": "^7.0.0",
     "react-native-reanimated": "^3.6.2"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.2"
   }
 }
