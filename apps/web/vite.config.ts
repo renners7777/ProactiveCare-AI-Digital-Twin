@@ -37,6 +37,7 @@ export default defineConfig({
       'common': path.resolve(__dirname, '../../packages/common')
     }
   },
+  envDir: '../../',
   optimizeDeps: {
     include: ['react', 'react-dom'],
     exclude: ['lucide-react', 'common']
