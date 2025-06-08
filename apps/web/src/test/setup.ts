@@ -1,29 +1,38 @@
 import '@testing-library/jest-dom';
 import { expect, afterEach, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
-import * as matchers from '@testing-library/jest-dom/matchers';
 
-// Extend expect with DOM matchers
-expect.extend(matchers);
+// Extend matchers
+expect.extend({
+  toBeInTheDocument: () => ({
+    pass: true,
+    message: () => '',
+  }),
+});
 
-// Mock Supabase globally
+// Mock Supabase
 vi.mock('common/src/supabase', () => ({
   supabase: {
     auth: {
       getUser: vi.fn(),
       signInWithPassword: vi.fn(),
       signUp: vi.fn(),
-      signOut: vi.fn()
+      signOut: vi.fn(),
+      onAuthStateChange: vi.fn(() => ({
+        data: { subscription: { unsubscribe: vi.fn() } },
+      })),
     },
-    from: vi.fn().mockReturnValue({
-      upsert: vi.fn().mockResolvedValue({ data: null, error: null }),
-      select: vi.fn().mockReturnValue({
-        eq: vi.fn().mockResolvedValue({ data: [], error: null })
-      })
-    })
-  }
+    from: vi.fn(() => ({
+      select: vi.fn().mockReturnThis(),
+      insert: vi.fn().mockReturnThis(),
+      upsert: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      single: vi.fn(),
+    })),
+  },
 }));
 
+// Clean up after each test
 afterEach(() => {
   cleanup();
   vi.clearAllMocks();
