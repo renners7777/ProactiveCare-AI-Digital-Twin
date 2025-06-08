@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/package.json",
   "name": "patient-monitoring",
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "workspaces": [
     "packages/*",
     "apps/*"
@@ -16,11 +17,11 @@
     "test:watch:web": "yarn workspace web test:watch",
     "test:watch:mobile": "yarn workspace mobile test:watch",
     "test:coverage": "yarn workspaces run test:coverage",
+    "test:coverage:mobile": "yarn workspace mobile test:coverage",
     "common:dev": "yarn workspace common dev",
     "common:build": "yarn workspace common build",
     "dev:all": "concurrently \"yarn common:dev\" \"yarn dev\" \"yarn mobile\""
   },
-  "packageManager": "yarn@1.22.22",
   "resolutions": {
     "metro": "^0.81.0",
     "react": "19.0.0",
@@ -40,5 +41,6 @@
     "jest-expo": "^53.0.7",
     "react-native-gesture-handler": "^2.25.0",
     "react-test-renderer": "18.2.0"
-  }
+  },
+  "licence": "MIT"
 }
