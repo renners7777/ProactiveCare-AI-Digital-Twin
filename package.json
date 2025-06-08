@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "patient-monitoring",
+  "name": "proactivecare-ai",
   "private": true,
   "packageManager": "yarn@1.22.22",
   "workspaces": [
@@ -20,13 +20,14 @@
     "test:coverage:mobile": "yarn workspace mobile test:coverage",
     "common:dev": "yarn workspace common dev",
     "common:build": "yarn workspace common build",
-    "dev:all": "concurrently \"yarn common:dev\" \"yarn dev\" \"yarn mobile\""
+    "dev:all": "concurrently \"yarn common:dev\" \"yarn dev\" \"yarn mobile\"",
+    "clean": "yarn workspaces run clean",
+    "build": "yarn workspaces run build"
   },
   "resolutions": {
     "metro": "^0.81.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-test-renderer": "19.0.0",
     "react-native-svg": "14.0.0",
     "@testing-library/dom": "^9.0.0",
     "workbox-build": "^7.0.0",
@@ -35,12 +36,14 @@
   },
   "devDependencies": {
     "@testing-library/jest-native": "^5.4.3",
-    "@testing-library/react-native": "12",
+    "@testing-library/react-native": "^12.0.0",
     "@types/jest": "^29.5.14",
     "jest": "^29.7.0",
     "jest-expo": "^53.0.7",
     "react-native-gesture-handler": "^2.25.0",
-    "react-test-renderer": "18.2.0"
+    "react-test-renderer": "19.0.0",
+    "concurrently": "^8.2.2",
+    "typescript": "^5.0.0"
   },
-  "licence": "MIT"
+  "license": "MIT"
 }
