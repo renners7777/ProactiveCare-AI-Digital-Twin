@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { supabase } from 'common/src/supabase';
-import { Button } from '../ui/Button';
+import Button from '../ui/Button';
 import { Checkbox } from '../ui/Checkbox';
 
 export function DataConsent() {

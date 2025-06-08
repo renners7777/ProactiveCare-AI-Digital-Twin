@@ -34,7 +34,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      'common': resolve(__dirname, '../../packages/common/src')
+      'common': resolve(__dirname, '../packages/common')
     }
   },
   optimizeDeps: {
