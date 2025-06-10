@@ -6,7 +6,7 @@
   "description": "Mobile application for ProactiveCare AI Digital Twin",
   "author": "Chris Renshaw",
   "license": "MIT",
-  "main": "index.ts",
+  "main": "node_modules/expo/AppEntry.js", 
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -23,7 +23,8 @@
     "common": "*",
     "expo": "^53.0.0",
     "expo-background-fetch": "^13.1.5",
-    "expo-health": "^0.0.0",
+    "expo-apple-healthkit": "^6.0.0",
+    "expo-health-connect": "^6.0.0",
     "expo-sensors": "~12.9.1",
     "expo-status-bar": "~2.2.3",
     "expo-updates": "~0.28.14",
