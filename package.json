@@ -18,7 +18,7 @@
     "test:watch:mobile": "yarn workspace mobile test:watch",
     "test:coverage": "yarn workspaces run test:coverage",
     "test:coverage:mobile": "yarn workspace mobile test:coverage",
-    "common:dev": "yarn workspace common dev",
+"common:dev": "yarn workspace common dev",
     "common:build": "yarn workspace common build",
     "dev:all": "concurrently \"yarn common:dev\" \"yarn dev\" \"yarn mobile\"",
     "clean": "yarn workspaces run clean",
@@ -45,7 +45,8 @@
     "react-test-renderer": "18.2.0",
     "concurrently": "^8.2.2",
     "typescript": "^5.0.0",
-    "ts-node": "^10.9.2"
+"ts-node": "^10.9.2",
+"expo-yarn-workspaces": "^1.5.2"
   },
   "license": "MIT"
 }

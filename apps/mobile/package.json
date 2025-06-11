@@ -8,7 +8,6 @@
   "license": "MIT",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "postinstall": "expo-yarn-workspaces postinstall",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
