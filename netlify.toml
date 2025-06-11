@@ -1,8 +1,12 @@
 [build]
   command = "yarn workspace web build"
   publish = "apps/web/dist"
-
 # Optional: You can specify Node.js and Yarn versions if needed
 # [build.environment]
 #   NODE_VERSION = "22.x"
 #   YARN_VERSION = "1.22.22"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
