@@ -57,8 +57,7 @@ An AI-powered Digital Twin platform designed to enhance well-being in social car
 
 ## Project Structure
 
-```
-proactivecare/
+```proactivecare/
 ├── apps/
 │   ├── web/          # Web application
 │   └── mobile/       # Mobile application (React Native)
@@ -79,12 +78,14 @@ proactivecare/
 ## Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/proactivecare.git
    cd proactivecare
    ```
 
 2. Install dependencies:
+
    ```bash
    yarn install
    ```
@@ -96,11 +97,13 @@ proactivecare/
 4. Start the development servers:
 
    Web application:
+
    ```bash
    yarn dev
    ```
 
    Mobile application:
+
    ```bash
    yarn mobile
    ```
@@ -137,9 +140,10 @@ yarn test:e2e
 
 ## Deployment
 
-### Web Application
+### Web Application Build
 
 1. Build the application:
+
    ```bash
    cd apps/web
    yarn build
@@ -147,9 +151,10 @@ yarn test:e2e
 
 2. Deploy to your preferred hosting platform (Netlify, Vercel, etc.)
 
-### Mobile Application
+### Mobile Application Build
 
 1. Build the Expo application:
+
    ```bash
    cd apps/mobile
    yarn build
@@ -168,6 +173,7 @@ We welcome contributions! Please follow these steps:
 5. Open a Pull Request
 
 Please ensure your PR:
+
 - Follows the existing code style
 - Includes appropriate tests
 - Updates documentation as needed
@@ -175,8 +181,9 @@ Please ensure your PR:
 ## Support
 
 For support, please:
+
 - Open an issue on GitHub
-- Contact us at CRSoftwareEngineer@outlook.com
+- Contact us at <CRSoftwareEngineer@outlook.com>
 
 ## License
 
