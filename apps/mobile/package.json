@@ -8,6 +8,7 @@
   "license": "MIT",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "postinstall": "expo-yarn-workspaces postinstall",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -17,13 +18,14 @@
     "test:coverage": "jest --coverage --config jest.config.js"
   },
   "dependencies": {
+    "@kingstinct/react-native-healthkit": "^1.0.1",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
     "@supabase/supabase-js": "^2.39.7",
     "common": "*",
     "expo": "~50.0.14",
-    "expo-background-fetch": "~13.1.5", 
-    "@kingstinct/expo-apple-healthkit": "^2.0.0",
+    "expo-application": "~5.1.1",
+    "expo-background-fetch": "~13.1.5",
     "expo-health-connect": "0.1.1",
     "expo-sensors": "~12.9.1",
     "expo-status-bar": "~1.11.1",
