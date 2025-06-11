@@ -246,10 +246,10 @@ const AboutPage: React.FC = () => {
             <div className="flex items-center space-x-2">
               <Mail size={16} className="text-neutral-500" />
               <a 
-                href="mailto:support@proactivecare.com" 
+                href="mailto:CRSoftwareEngineer@outlook.com" 
                 className="text-primary-600 hover:text-primary-700"
               >
-                support@proactivecare.com
+                CRSoftwareEngineer@outlook.com
               </a>
             </div>
           </div>
