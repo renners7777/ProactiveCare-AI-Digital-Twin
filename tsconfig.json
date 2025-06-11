@@ -19,7 +19,9 @@
     "noUnusedParameters": true,
     "noFallthrough": true,
     "composite": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "." // Optional: can be useful for path aliases if you use them at the root
   },
-  "extends": "expo/tsconfig.base"
+  "files": [], // Explicitly state no files are compiled by the root config itself
+  "references": [{ "path": "apps/web" }, { "path": "apps/mobile" }, { "path": "packages/common" }]
 }
