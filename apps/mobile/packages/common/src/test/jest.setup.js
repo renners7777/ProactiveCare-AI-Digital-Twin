@@ -1,24 +1,20 @@
+import '@testing-library/jest-native/extend-expect';
 import 'react-native-gesture-handler/jestSetup';
 
-// Mock window and global objects needed by Expo
-global.window = {};
-global.__reanimatedWorkletInit = jest.fn();
-global.ReanimatedDataMock = {};
-
-// Mock Reanimated
+// Mock reanimated
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock');
   Reanimated.default.call = () => {};
   return Reanimated;
 });
 
-// Mock native modules
+// Mock native animated helper
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
-jest.mock('@react-native-async-storage/async-storage', () => ({
-  setItem: jest.fn(),
-  getItem: jest.fn(),
-  removeItem: jest.fn()
-}));
+
+// Set up global mocks
+global.window = {};
+global.__reanimatedWorkletInit = jest.fn();
+global.ReanimatedDataMock = {};
 
 // Mock Expo modules
 jest.mock('expo-font', () => ({
