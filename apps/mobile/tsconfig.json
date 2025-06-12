@@ -3,6 +3,13 @@
   "compilerOptions": {
     "strict": true,
     "module": "ESNext",
-    "forceConsistentCasingInFileNames": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "common/*": ["../../packages/common/src/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "App.tsx"],
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx"]
 }
