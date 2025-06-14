@@ -4,6 +4,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { HomeScreen } from './screens/HomeScreen';
 import { HealthDataScreen } from './screens/HealthDataScreen';
+import { registerRootComponent } from 'expo';
+import App from './src/App';
+
+export default registerRootComponent(App);
 
 const Stack = createNativeStackNavigator();
 
