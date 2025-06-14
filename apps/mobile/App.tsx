@@ -11,13 +11,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
-          name="Home" 
+        <Stack.Screen
+          name="Home"
           component={HomeScreen}
           options={{ title: 'ProactiveCare' }}
         />
-        <Stack.Screen 
-          name="HealthData" 
+        <Stack.Screen
+          name="HealthData"
           component={HealthDataScreen}
           options={{ title: 'Health Data' }}
         />
