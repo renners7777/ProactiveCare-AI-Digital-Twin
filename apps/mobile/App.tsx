@@ -5,13 +5,10 @@ import { StatusBar } from 'expo-status-bar';
 import { HomeScreen } from './screens/HomeScreen';
 import { HealthDataScreen } from './screens/HealthDataScreen';
 import { registerRootComponent } from 'expo';
-import App from './src/App';
-
-export default registerRootComponent(App);
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -30,3 +27,5 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+export default registerRootComponent(App);
