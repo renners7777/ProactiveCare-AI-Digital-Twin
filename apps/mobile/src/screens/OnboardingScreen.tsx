@@ -1,84 +1,67 @@
 import React from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
-import { useAuth } from '../hooks/useAuth';
-import { useHealthTracking } from '../hooks/useHealthTracking';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Button } from '../components/ui/Button';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../types/navigation';
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Onboarding'>;
 
 export function OnboardingScreen() {
-  const { user } = useAuth();
-  const { initializeTracking } = useHealthTracking(user?.id);
-  const navigation = useNavigation();
-
-  const handleHealthSetup = async () => {
-    try {
-      await initializeTracking();
-      navigation.navigate('Dashboard');
-    } catch (error) {
-      Alert.alert(
-        'Setup Failed',
-        'Unable to setup health tracking. Please try again.'
-      );
-    }
-  };
+  const navigation = useNavigation<NavigationProp>();
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>Welcome to ProactiveCare</Text>
-        
-        <Text style={styles.description}>
-          Connect your health data to get personalized insights and monitoring.
-        </Text>
-
-        <Button
-          onPress={handleHealthSetup}
-          style={styles.button}
-        >
-          Connect Health Data
-        </Button>
-
-        <Button
-          onPress={() => navigation.navigate('Dashboard')}
-          variant="secondary"
-          style={styles.skipButton}
-        >
-          Skip for Now
-        </Button>
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome to ProactiveCare</Text>
+      <Text style={styles.subtitle}>Your Personal Health Assistant</Text>
+      
+      <TouchableOpacity 
+        style={styles.button}
+        onPress={() => navigation.navigate('SignUp')}
+      >
+        <Text style={styles.buttonText}>Get Started</Text>
+      </TouchableOpacity>
+      
+      <TouchableOpacity 
+        style={[styles.button, styles.secondaryButton]}
+        onPress={() => navigation.navigate('PrivacyPolicy')}
+      >
+        <Text style={styles.buttonText}>Privacy Policy</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
-  content: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 16,
-    textAlign: 'center',
+    marginBottom: 10,
   },
-  description: {
-    fontSize: 16,
+  subtitle: {
+    fontSize: 18,
+    marginBottom: 30,
     textAlign: 'center',
-    marginBottom: 32,
-    color: '#666',
   },
   button: {
-    marginBottom: 16,
-    width: '100%',
+    backgroundColor: '#007AFF',
+    padding: 15,
+    borderRadius: 10,
+    width: '80%',
+    marginBottom: 15,
   },
-  skipButton: {
-    width: '100%',
+  secondaryButton: {
+    backgroundColor: '#6c757d',
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
