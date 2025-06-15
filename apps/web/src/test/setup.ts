@@ -1,14 +1,6 @@
 import '@testing-library/jest-dom';
-import { expect, afterEach, vi } from 'vitest';
+import { afterEach, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
-
-// Extend matchers
-expect.extend({
-  toBeInTheDocument: () => ({
-    pass: true,
-    message: () => '',
-  }),
-});
 
 // Mock Supabase
 vi.mock('common/src/supabase', () => ({
