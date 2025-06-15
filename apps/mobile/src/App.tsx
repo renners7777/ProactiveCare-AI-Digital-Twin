@@ -1,8 +1,5 @@
 import React from 'react';
-import { View, Text, LogBox } from 'react-native';
-
-// Disable yellow box warnings during development
-LogBox.ignoreAllLogs();
+import { View, Text } from 'react-native';
 
 console.log('App component rendering...'); // Debug log
 
@@ -14,7 +11,7 @@ export default function App() {
       justifyContent: 'center',
       alignItems: 'center'
     }}>
-      <Text style={{ fontSize: 24 }}>Basic Test</Text>
+      <Text>Basic Test</Text>
     </View>
   );
 }
