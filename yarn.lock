@@ -6547,6 +6547,11 @@ expo-font@~13.3.1:
   dependencies:
     fontfaceobserver "^2.1.0"
 
+expo-health@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.npmjs.org/expo-health/-/expo-health-0.0.0.tgz#fe2e94d07e5f59b2537bea28fc42db65b25ff443"
+  integrity sha512-GJ93cDee0bB1mgtSW621laJIeflZXF9dTeK/7hu1DfX/UoJTAlJ+bK73J8H8JfgBEvRJ+/+NhAfeb8gU4JKj2A==
+
 expo-keep-awake@~14.1.4:
   version "14.1.4"
   resolved "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-14.1.4.tgz#80197728563e0e17523e5a606fbd6fbed9639503"
@@ -11729,6 +11734,11 @@ react-native-reanimated@~3.17.4:
     convert-source-map "^2.0.0"
     invariant "^2.2.4"
     react-native-is-edge-to-edge "1.1.7"
+
+react-native-safe-area-context@5.4.0:
+  version "5.4.0"
+  resolved "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-5.4.0.tgz#04b51940408c114f75628a12a93569d30c525454"
+  integrity sha512-JaEThVyJcLhA+vU0NU8bZ0a1ih6GiF4faZ+ArZLqpYbL6j7R3caRqj+mE3lEtKCuHgwjLg3bCxLL1GPUJZVqUA==
 
 react-native-svg@15.11.2:
   version "15.11.2"
