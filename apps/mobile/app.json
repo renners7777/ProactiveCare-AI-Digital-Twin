@@ -23,11 +23,6 @@
         "backgroundColor": "#ffffff"
       }
     },
-    "extra": {
-      "eas": {
-        "projectId": "your-project-id"
-      }
-    },
     "owner": "Chris_Renshaw",
     "sdkVersion": "53.0.0"
   }
