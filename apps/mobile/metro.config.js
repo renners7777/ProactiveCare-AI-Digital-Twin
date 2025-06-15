@@ -15,9 +15,6 @@ config.resolver.nodeModulesPaths = [
 
 // Add proper extensions
 config.resolver.sourceExts = ['jsx', 'js', 'ts', 'tsx', 'json'];
-config.resolver.assetExts = ['png', 'jpg', 'jpeg', 'gif', 'svg'];
-
-// Disable hierarchical lookup for better monorepo support
 config.resolver.disableHierarchicalLookup = true;
 
 module.exports = config;

@@ -30,9 +30,6 @@
     "react-dom": "19.0.0",
     "react-native": "0.79.3",
     "react-native-svg": "15.11.2",
-    "@testing-library/dom": "^9.3.4",
-    "workbox-build": "^7.0.0",
-    "workbox-window": "^7.0.0",
     "react-native-reanimated": "~3.17.4",
     "react-test-renderer": "19.0.0"
   },
