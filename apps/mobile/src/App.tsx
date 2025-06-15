@@ -2,28 +2,45 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
+import { View, Text } from 'react-native';
+
+// Import screens - comment out any that don't exist yet
 import { DashboardScreen } from './screens/DashboardScreen';
 import { DataConsentScreen } from './screens/DataConsentScreen';
 import { DeviceSetupScreen } from './screens/DeviceSetupScreen';
 import { OnboardingScreen } from './screens/OnboardingScreen';
 import { PrivacyPolicyScreen } from './screens/PrivacyPolicyScreen';
 import { SignUpScreen } from './screens/SignUpScreen';
-import { registerRootComponent } from 'expo';
 
 const Stack = createNativeStackNavigator();
 
-function App() {
+// Fallback component for development
+const PlaceholderScreen = () => (
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Screen not implemented yet</Text>
+  </View>
+);
+
+export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Onboarding">
+      <Stack.Navigator
+        initialRouteName="Onboarding"
+        screenOptions={{
+          headerShown: true,
+        }}
+      >
         <Stack.Screen
           name="Onboarding"
-          component={OnboardingScreen}
-          options={{ headerShown: false }}
+          component={OnboardingScreen || PlaceholderScreen}
+          options={{
+            title: 'Welcome',
+            headerShown: false
+          }}
         />
         <Stack.Screen
           name="Dashboard"
-          component={DashboardScreen}
+          component={DashboardScreen || PlaceholderScreen}
           options={{ title: 'ProactiveCare' }}
         />
         <Stack.Screen
@@ -51,5 +68,3 @@ function App() {
     </NavigationContainer>
   );
 }
-
-export default registerRootComponent(App);
