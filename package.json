@@ -25,13 +25,14 @@
     "build": "yarn workspaces run build"
   },
   "resolutions": {
+    "@babel/core": "^7.20.0",
     "metro": "^0.81.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.79.3",
-    "react-native-svg": "15.11.2",
     "react-native-reanimated": "~3.17.4",
-    "react-test-renderer": "19.0.0"
+    "react-native-svg": "15.11.2",
+    "react-native-screens": "^4.11.1"
   },
   "devDependencies": {
     "@testing-library/jest-native": "^5.4.3",

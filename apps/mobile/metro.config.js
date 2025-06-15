@@ -1,18 +1,9 @@
 const { getDefaultConfig } = require('expo/metro-config');
-const path = require('path');
 
-const projectRoot = __dirname;
-const workspaceRoot = path.resolve(__dirname, '../..');
+const config = getDefaultConfig(__dirname);
 
-const config = getDefaultConfig(projectRoot);
-
-config.watchFolders = [workspaceRoot];
-config.resolver.nodeModulesPaths = [
-  path.resolve(projectRoot, 'node_modules'),
-  path.resolve(workspaceRoot, 'node_modules'),
-];
-
-config.resolver.sourceExts = ['jsx', 'js', 'ts', 'tsx', 'json'];
-config.resolver.disableHierarchicalLookup = true;
+// Ensure proper file resolution
+config.resolver.sourceExts = ['jsx', 'js', 'ts', 'tsx'];
+config.resolver.assetExts = ['png', 'jpg', 'jpeg', 'gif'];
 
 module.exports = config;
