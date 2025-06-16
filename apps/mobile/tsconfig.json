@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": { 
+      "composite": true,
       "strict": true,
       "module": "ESNext",
         "forceConsistentCasingInFileNames": true,
