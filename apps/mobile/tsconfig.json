@@ -1,13 +1,13 @@
 {
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "strict": true,
-    "module": "ESNext",
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "common/*": ["../../packages/common/src/*"],
-      "@/*": ["./src/*"]
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": { 
+      "strict": true,
+      "module": "ESNext",
+        "forceConsistentCasingInFileNames": true,
+        "baseUrl": ".",
+        "paths": {
+          "common/*": ["../../packages/common/src/*"],
+          "@/*": ["./src/*"]
     }
   },
   "include": ["src", "App.tsx"],
