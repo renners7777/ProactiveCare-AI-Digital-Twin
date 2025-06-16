@@ -8,21 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "yarn workspace web dev",
-    "mobile": "yarn workspace mobile start",
-    "test:web": "yarn workspace web test",
-    "test:mobile": "yarn workspace mobile test",
-    "test:common": "yarn workspace common test",
-    "test:all": "yarn test:common && yarn test:web && yarn test:mobile",
-    "test:watch:web": "yarn workspace web test:watch",
-    "test:watch:mobile": "yarn workspace mobile test:watch",
-    "test:coverage": "yarn workspaces run test:coverage",
-    "test:coverage:mobile": "yarn workspace mobile test:coverage",
-    "common:dev": "yarn workspace common dev",
-    "common:build": "yarn workspace common build",
-    "dev:all": "concurrently \"yarn common:dev\" \"yarn dev\" \"yarn mobile\"",
-    "clean": "yarn workspaces run clean",
-    "build": "yarn workspaces run build"
+    "mobile": "yarn workspace mobile start"
   },
   "resolutions": {
     "react": "18.2.0",
@@ -47,13 +33,13 @@
   "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.20.0",
-    "expo": "~53.0.0",
+    "expo": "~48.0.18",
     "expo-health": "^0.0.0",
     "nativewind": "4.0.1",
     "postcss": "8.4.31",
-    "react": "19.0.0",
-    "react-native": "0.79.3",
-    "react-native-safe-area-context": "5.4.0",
+    "react": "18.2.0",
+    "react-native": "0.71.8",
+    "react-native-safe-area-context": "4.5.0",
     "tailwindcss": "3.3.2"
   }
 }
