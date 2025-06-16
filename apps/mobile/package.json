@@ -8,15 +8,13 @@
   "license": "MIT",
   "main": "index.ts",
   "scripts": {
-    "start": "EXPO_DEBUG=true expo start --clear",
-    "android": "EXPO_DEBUG=true expo start --android --clear",
-    "ios": "EXPO_DEBUG=true expo start --ios --clear",
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --config jest.config.js",
     "test:watch": "jest --watch --config jest.config.js",
-    "test:coverage": "jest --coverage --config jest.config.js",
-    "clean": "rm -rf node_modules .expo",
-    "postinstall": "expo-yarn-workspaces postinstall"
+    "test:coverage": "jest --coverage --config jest.config.js"
   },
   "dependencies": {
     "@kingstinct/react-native-healthkit": "^1.0.1",
