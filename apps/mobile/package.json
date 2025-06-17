@@ -20,7 +20,7 @@
     "@supabase/supabase-js": "^2.39.7",
     "common": "*",
     "expo": "~53.0.0",
-    "expo-status-bar": "~1.12.1",
+"expo-status-bar": "~2.2.3",
     "react": "18.2.0",
     "react-native": "0.76.x",
     "react-native-reanimated": "~3.14.0",
