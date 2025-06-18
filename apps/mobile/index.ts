@@ -1,5 +1,5 @@
-chris/Documents/ProactiveCare AI - Digital Twin /apps/mobile/index.ts
 import { registerRootComponent } from 'expo';
-import App from './src/App';
+
+import App from './src/App'; // Adjust path if App.tsx is moved
 
 registerRootComponent(App);

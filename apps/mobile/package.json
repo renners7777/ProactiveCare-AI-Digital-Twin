@@ -6,7 +6,6 @@
   "description": "Mobile application for ProactiveCare AI Digital Twin",
   "author": "Chris Renshaw",
   "license": "MIT",
-  "main": "index.ts",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
